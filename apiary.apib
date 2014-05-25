@@ -1,0 +1,1143 @@
+FORMAT: 1A
+HOST: https://api.trychec.com/marketplace
+
+# Chec Marketplace API (Beta) 
+Chec's marketplace API allows you to integrate ecommerce into your application/platform without having to build out your own ecommerce solution. 
+You can create merchants, add products, allow customers to checkout, and pull order & transaction data from chec.
+
+# Group Merchants
+The API allows you to add, delete, and update your merchants. You can retrieve individual merchants as well as a list of all your merchants.
+
+## Merchants [/merchants]
+
+### List merchants [GET]
+List all merchants on your marketplace.
+
++ Response 200 (application/json)
+
+        [{
+            "merchant_id": "MER_jFHenG23Rg",
+            "currency": "USD",
+            "sellers_name": "CJ Tate",
+            "sellers_email": "cjtate@gmail.com",
+            "street_address": "1001 Balling St",
+            "town_city": "Racks on Racks",
+            "county_state": "RacksOnRackshire",
+            "postal_zip_code": "94107",
+            "country": "US",
+            "locked": null,
+            "locked_reason": null,
+            "meta": {},
+        },
+        {
+            "merchant_id": "MER_jFHGe663Rg",
+            "currency": "GBP",
+            "sellers_name": "Devan",
+            "sellers_email": "devan@madebyswipe.com",
+            "street_address": "68 Kingsway",
+            "town_city": "Northampton",
+            "county_state": "Northamptonshire",
+            "postal_zip_code": "NN28HF",
+            "country": "GB",
+            "locked": null,
+            "locked_reason": null,
+            "meta": {},
+        }, {...}, {...}]
+        
+### Create a new merchant [POST]
+Add a new merchant to your marketplace
++ Request (application/json)
+
+         {
+            "currency": "USD",
+            "sellers_name": "CJ Tate",
+            "sellers_email": "cjtate@gmail.com",
+            "street_address": "1001 Balling St",
+            "town_city": "Racks on Racks",
+            "county_state": "RacksOnRackshire",
+            "postal_zip_code": "94107",
+            "country": "US",
+            "meta": {
+                    "communly_id": 123,
+                    "other_meta_data": 321
+                        },
+         }
+
++ Response 201 (application/json)
+
+        {
+            "merchant_id": "MER_jFHenG23Rg",
+            "currency": "USD",
+            "sellers_name": "CJ Tate",
+            "sellers_email": "cjtate@gmail.com",
+            "street_address": "1001 Balling St",
+            "town_city": "Racks on Racks",
+            "county_state": "RacksOnRackshire",
+            "postal_zip_code": "94107",
+            "country": "US",
+            "locked": null,
+            "locked_reason": null,
+            "meta": {
+                    "communly_id": 123,
+                    "other_meta_data": 321
+                        },
+            "created" : 1361481930,
+            "last_updated" 1361481930,
+        }
+
+## Merchant Resources [/merchants/{merchant_id}]  
+
+### Retrieve a merchant [GET]
+Retrieve a merchants details
+
++ Response 200 (application/json)
+
+        {
+            "merchant_id": "MER_jFHenG23Rg",
+            "currency": "USD",
+            "sellers_name": "CJ Tate",
+            "sellers_email": "cjtate@gmail.com",
+            "street_address": "1001 Balling St",
+            "town_city": "Racks on Racks",
+            "county_state": "RacksOnRackshire",
+            "postal_zip_code": "94107",
+            "country": "US",
+            "locked": null,
+            "locked_reason": null,
+            "meta": {
+                    "communly_id": 123,
+                    "other_meta_data": 321
+                        },
+            "created" : 1361481930,
+            "last_updated" 1361481930,
+        }
+        
+        
+### Update a merchant [PUT]
+Update a merchants details
+
++ Request (application/json)
+
+        {
+            "currency": "USD",
+            "sellers_name": "CJ Tate",
+            "sellers_email": "cjtate@gmail.com",
+            "street_address": "1001 Balling St",
+            "town_city": "Racks on Racks",
+            "county_state": "RacksOnRackshire",
+            "postal_zip_code": "94107",
+            "country": "US",
+            "meta": {
+                    "communly_id": 123,
+                    "other_meta_data": 321
+                        },
+         }
+         
+
++ Response 200 (application/json)
+
+        { 
+                "merchant_id": "MER_jFHenG23Rg",
+                "currency": "USD",
+                "sellers_name": "CJ Tate",
+                "sellers_email": "cjtate@gmail.com",
+                "street_address": "1001 Balling St",
+                "town_city": "Racks on Racks",
+                "county_state": "RacksOnRackshire",
+                "postal_zip_code": "94107",
+                "country": "US",
+                "locked": null,
+                "locked_reason": null,
+                "meta": {
+                        "communly_id": 123,
+                        "other_meta_data": 321
+                            },
+                "created" : 1361481930,
+                "last_updated" 1361481930,
+            }
+        
+### Remove a merchant [DELETE]
+
++ Response 204 
+
+# Group Products
+The API allows you to list, add, delete, and update your merchants products.
+
+## Products [/products/{merchant_id}]
+
+### List products [GET] 
+List products for an individual merchant, returns only essential data.
+
++ Response 201 (application/json)
+
+        [{
+              "product_id": "PRO_jFHenG23Rg",
+              "key": "d9pTst",
+              "active": "1",
+              "name": "123",
+              "desc": null,
+              "price": "32100",
+              "formatted_price": "$321",
+              "formatted_price_with_currency_code": "$310 USD",
+              "limited_quantity": true,
+              "quantity": 10,
+              "image": "images.communly.com/product_image.png",
+              "pay_what_you_want": null,
+              "sales_count": "0",
+              "sales_usd_cents": "0",
+              "created" : 1361481930,
+              "last_updated" : 1361481930,
+              "meta" : {},
+            }, {...}, {...}]
+        
+## Create a product [/products/{merchant_id]
+
+### Create a product [POST]
+Create a product 
+
++ Request (application/json)
+
+        {
+              "name": "Dummy Product Name",
+              "desc": null,
+              "price": "32100",
+              "limited_quantity": true,
+              "quantity": 10,
+              "image": "cdn.communly.com/product_image.png",
+              "collect_shipping_address": false,
+              "extra_fields": [
+                {
+                  "name": "Contact Name",
+                  "required": true
+                },
+                {
+                  "name": "Contact Number",
+                  "required": false
+                }
+              ],
+              "pay_what_you_want": null,
+              "shipping_options": {
+                "enabled": true,
+                "options": [
+                  {
+                    "description": "UPS Airmail",
+                    "price": 2000,
+                    "region": "international"
+                  },
+                  {
+                    "description": "UPS Ground",
+                    "price": 100,
+                    "region": "local"
+                  },
+                  {
+                    "description": "Free",
+                    "price": 0,
+                    "region": "everywhere"
+                  }
+                ]
+              },
+              "digital_delivery": {
+                "enabled": true,
+                "access_window": 
+                  {
+                    "expires": true,
+                    "duration": 1,
+                    "duration_period" : "weeks",
+                    "how_many_times": 10
+                  },
+                "files_links": [
+                  {
+                    "type": "url",
+                    "link": "http://cjtate.com/access",
+                    "info": "Access your exclusive content"
+                  },
+                  {
+                    "description": "download",
+                    "link": "http://cdn.communly.com/cj_tate.mp3",
+                    "info": "MP3 Audio File"
+                  },
+                  {
+                    "description": "download",
+                    "link": "http://cdn.communly.com/cj_tate.mp4",
+                    "info": "MP4 Video"
+                  }
+                ]
+              },
+              "variants": [
+                {
+                  "category_name": "T-Shirt Size",
+                  "options": {
+                    "0": {
+                      "name": "Small",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    "1": {
+                      "name": "Medium",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    "2": {
+                      "name": "Large",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    }
+                  }
+                },
+                {
+                  "category_name": "T-Shirt Style",
+                  "options": {
+                    "0": {
+                      "name": "Special Edition",
+                      "plus_amount": 1000,
+                       "quantity" : 10
+                    },
+                    "1": {
+                      "name": "Standard",
+                      "plus_amount": 0,
+                       "quantity" : 100
+                    }
+                  }
+                }
+              ],
+            "discount_codes": [
+                      {
+                        "code": "15DOLLAR$OFF",
+                        "minus_amount": 1500,
+                        "quantity" : "unlimited"
+                      },
+                      {
+                        "code": "35DOLLAR$OFF",
+                        "minus_amount": 3000,
+                        "quantity" : 5
+                      }
+                    ],
+              "meta" : {},
+            }
+
++ Response 201 (application/json)
+
+        {
+              "product_id": "PRO_jFHenG23Rg",
+              "merchant_id": "MER_jFHenG23Rg",
+              "key": "d9pTst",
+              "active": "1",
+              "name": "123",
+              "desc": "",
+              "price": "32100",
+              "formatted_price": "$321",
+              "formatted_price_with_currency_code": "$310 USD",
+              "limited_quantity": true,
+              "quantity": 10,
+              "image": "images.communly.com/product_image.png",
+              "collect_shipping_address": false,
+              "extra_fields": [
+                { "field_id": "EF_Nnf84oKef",
+                  "name": "Contact Name",
+                  "required": true
+                },
+                {  
+                  "field_id": "EF_Nnf8787gGZ",
+                  "name": "Contact Number",
+                  "required": true
+                }
+              ],
+              "pay_what_you_want": null,
+              "shipping_options": {
+                "enabled": true,
+                "options": [
+                  { "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "UPS Airmail",
+                    "price": 2000,
+                    "region": "international"
+                  },
+                  { 
+                  "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "UPS Ground",
+                    "price": 100,
+                    "region": "local"
+                  },
+                  {
+                  "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "Free",
+                    "price": 0,
+                    "region": "everywhere"
+                  }
+                ]
+              },
+              "digital_delivery": {
+                "enabled": true,
+                "access_window": 
+                  {
+                    "expires": true,
+                    "duration": 1,
+                    "duration_period" : "weeks",
+                    "how_many_times": 10
+                  },
+                "files_links": [
+                  {
+                    "type": "url",
+                    "link": "http://cjtate.com/access",
+                    "info": "Access your exclusive content"
+                  },
+                  {
+                    "description": "download",
+                    "link": "http://cdn.communly.com/cj_tate.mp3",
+                    "info": "MP3 Audio File"
+                  },
+                  {
+                    "description": "download",
+                    "link": "http://cdn.communly.com/cj_tate.mp4",
+                    "info": "MP4 Video"
+                  }
+                ]
+              },
+              "variants": [
+                {"variant_id": "VAR_Nnf84oKef",
+                  "category_name": "T-Shirt Size",
+                  "options": {
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Small",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Medium",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Large",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    }
+                  }
+                },
+                {"variant_id": "VAR_Nnf84oKef",
+                  "category_name": "T-Shirt Style",
+                  "options": {
+                    {   
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Special Edition",
+                      "plus_amount": 1000,
+                       "quantity" : 10
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Standard",
+                      "plus_amount": 0,
+                       "quantity" : 100
+                    }
+                  }
+                }
+              ],
+            "discount_codes": [
+                      {
+                        "code": "15DOLLAR$OFF",
+                        "minus_amount": 1500,
+                        "quantity" : "unlimited"
+                      },
+                      {
+                        "code": "35DOLLAR$OFF",
+                        "minus_amount": 3000,
+                        "quantity" : 5
+                      }
+                    ],
+              "sales_count": "0",
+              "sales_usd_cents": "0",
+              "created" : 1361481930,
+              "last_updated" : 1361481930,
+              "meta" : {},
+            }
+
+
+## Product Resources [/products/{merchant_id}/{product_id}]
+
+### Retrieve a product [GET]
+Retrieve a merchant's product
+
++ Response 201 (application/json)
+
+                {
+              "product_id": "PRO_jFHenG23Rg",
+              "merchant_id": "MER_jFHenG23Rg",
+              "key": "d9pTst",
+              "active": "1",
+              "name": "123",
+              "desc": "",
+              "price": "32100",
+              "formatted_price": "$321",
+              "formatted_price_with_currency_code": "$310 USD",
+              "limited_quantity": true,
+              "quantity": 10,
+              "image": "images.communly.com/product_image.png",
+              "collect_shipping_address": false,
+              "extra_fields": [
+                { "field_id": "EF_Nnf84oKef",
+                  "name": "Contact Name",
+                  "required": true
+                },
+                {  
+                  "field_id": "EF_Nnf8787gGZ",
+                  "name": "Contact Number",
+                  "required": true
+                }
+              ],
+              "pay_what_you_want": null,
+              "shipping_options": {
+                "enabled": true,
+                "options": [
+                  { "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "UPS Airmail",
+                    "price": 2000,
+                    "region": "international"
+                  },
+                  { 
+                  "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "UPS Ground",
+                    "price": 100,
+                    "region": "local"
+                  },
+                  {
+                  "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "Free",
+                    "price": 0,
+                    "region": "everywhere"
+                  }
+                ]
+              },
+              "digital_delivery": {
+                "enabled": true,
+                "access_window": 
+                  {
+                    "expires": true,
+                    "duration": 1,
+                    "duration_period" : "weeks",
+                    "how_many_times": 10
+                  },
+                "files_links": [
+                  {
+                    "type": "url",
+                    "link": "http://cjtate.com/access",
+                    "info": "Access your exclusive content"
+                  },
+                  {
+                    "description": "download",
+                    "link": "http://cdn.communly.com/cj_tate.mp3",
+                    "info": "MP3 Audio File"
+                  },
+                  {
+                    "description": "download",
+                    "link": "http://cdn.communly.com/cj_tate.mp4",
+                    "info": "MP4 Video"
+                  }
+                ]
+              },
+              "variants": [
+                {"variant_id": "VAR_Nnf84oKef",
+                  "category_name": "T-Shirt Size",
+                  "options": {
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Small",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Medium",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Large",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    }
+                  }
+                },
+                {"variant_id": "VAR_Nnf84oKef",
+                  "category_name": "T-Shirt Style",
+                  "options": {
+                    {   
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Special Edition",
+                      "plus_amount": 1000,
+                       "quantity" : 10
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Standard",
+                      "plus_amount": 0,
+                       "quantity" : 100
+                    }
+                  }
+                }
+              ],
+            "discount_codes": [
+                      {
+                        "code": "15DOLLAR$OFF",
+                        "minus_amount": 1500,
+                        "quantity" : "unlimited"
+                      },
+                      {
+                        "code": "35DOLLAR$OFF",
+                        "minus_amount": 3000,
+                        "quantity" : 5
+                      }
+                    ],
+              "sales_count": "0",
+              "sales_usd_cents": "0",
+              "created" : 1361481930,
+              "last_updated" : 1361481930,
+              "meta" : {},
+            }
+
+### Update a product [PUT]
+Update a merchant's product
+
++ Request (application/json)
+
+        {
+              "name": "123",
+              "desc": "",
+              "price": "32100",
+              "limited_quantity": true,
+              "quantity": 10,
+              "image": "cdn.communly.com/product_image.png",
+              "collect_shipping_address": false,
+              "extra_fields": [
+                {
+                  "name": "Contact Name",
+                  "required": true
+                },
+                {
+                  "name": "Contact Number",
+                  "required": false
+                }
+              ],
+              "pay_what_you_want": null,
+              "shipping_options": {
+                "enabled": true,
+                "options": [
+                  {
+                    "description": "UPS Airmail",
+                    "price": 2000,
+                    "region": "international"
+                  },
+                  {
+                    "description": "UPS Ground",
+                    "price": 100,
+                    "region": "local"
+                  },
+                  {
+                    "description": "Free",
+                    "price": 0,
+                    "region": "everywhere"
+                  }
+                ]
+              },
+              "digital_delivery": {
+                "enabled": true,
+                "access_window": 
+                  {
+                    "expires": true,
+                    "duration": 2,
+                    "duration_period" : "months",
+                    "how_many_times": 10
+                  },
+                "files_links": [
+                  {
+                    "type": "url",
+                    "link": "http://cjtate.com/access",
+                    "info": "Access your exclusive content"
+                  },
+                  {
+                    "description": "download",
+                    "link": "http://cdn.communly.com/cj_tate.mp3",
+                    "info": "MP3 Audio File"
+                  },
+                  {
+                    "description": "download",
+                    "link": "http://cdn.communly.com/cj_tate.mp4",
+                    "info": "MP4 Video"
+                  }
+                ]
+              },
+              "variants": [
+                {
+                  "category_name": "T-Shirt Size",
+                  "options": {
+                    "0": {
+                      "name": "Small",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    "1": {
+                      "name": "Medium",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    "2": {
+                      "name": "Large",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    }
+                  }
+                },
+                {
+                  "category_name": "T-Shirt Style",
+                  "options": {
+                    "0": {
+                      "name": "Special Edition",
+                      "plus_amount": 1000,
+                       "quantity" : 10
+                    },
+                    "1": {
+                      "name": "Standard",
+                      "plus_amount": 0,
+                       "quantity" : 100
+                    }
+                  }
+                }
+              ],
+            "discount_codes": [
+                      {
+                        "code": "15DOLLAR$OFF",
+                        "minus_amount": 1500,
+                        "quantity" : "unlimited"
+                      },
+                      {
+                        "code": "35DOLLAR$OFF",
+                        "minus_amount": 3000,
+                        "quantity" : 5
+                      }
+                    ],
+              "meta" : {},
+            }
+
++ Response 201 (application/json)
+
+                {
+              "product_id": "PRO_jFHenG23Rg",
+              "merchant_id": "MER_jFHenG23Rg",
+              "key": "d9pTst",
+              "active": "1",
+              "name": "123",
+              "desc": "",
+              "price": "32100",
+              "formatted_price": "$321",
+              "formatted_price_with_currency_code": "$310 USD",
+              "limited_quantity": true,
+              "quantity": 10,
+              "image": "images.communly.com/product_image.png",
+              "collect_shipping_address": false,
+              "extra_fields": [
+                { "field_id": "EF_Nnf84oKef",
+                  "name": "Contact Name",
+                  "required": true
+                },
+                {  
+                  "field_id": "EF_Nnf8787gGZ",
+                  "name": "Contact Number",
+                  "required": true
+                }
+              ],
+              "pay_what_you_want": null,
+              "shipping_options": {
+                "enabled": true,
+                "options": [
+                  { "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "UPS Airmail",
+                    "price": 2000,
+                    "region": "international"
+                  },
+                  { 
+                  "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "UPS Ground",
+                    "price": 100,
+                    "region": "local"
+                  },
+                  {
+                  "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "Free",
+                    "price": 0,
+                    "region": "everywhere"
+                  }
+                ]
+              },
+              "digital_delivery": {
+                "enabled": true,
+                "access_window": 
+                  {
+                    "expires": true,
+                    "duration": 1,
+                    "duration_period" : "weeks",
+                    "how_many_times": 10
+                  },
+                "files_links": [
+                  {
+                    "type": "url",
+                    "link": "http://cjtate.com/access",
+                    "info": "Access your exclusive content"
+                  },
+                  {
+                    "description": "download",
+                    "link": "http://cdn.communly.com/cj_tate.mp3",
+                    "info": "MP3 Audio File"
+                  },
+                  {
+                    "description": "download",
+                    "link": "http://cdn.communly.com/cj_tate.mp4",
+                    "info": "MP4 Video"
+                  }
+                ]
+              },
+              "variants": [
+                {"variant_id": "VAR_Nnf84oKef",
+                  "category_name": "T-Shirt Size",
+                  "options": {
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Small",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Medium",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Large",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    }
+                  }
+                },
+                {"variant_id": "VAR_Nnf84oKef",
+                  "category_name": "T-Shirt Style",
+                  "options": {
+                    {   
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Special Edition",
+                      "plus_amount": 1000,
+                       "quantity" : 10
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Standard",
+                      "plus_amount": 0,
+                       "quantity" : 100
+                    }
+                  }
+                }
+              ],
+            "discount_codes": [
+                      {
+                        "code": "15DOLLAR$OFF",
+                        "minus_amount": 1500,
+                        "quantity" : "unlimited"
+                      },
+                      {
+                        "code": "35DOLLAR$OFF",
+                        "minus_amount": 3000,
+                        "quantity" : 5
+                      }
+                    ],
+              "sales_count": "0",
+              "sales_usd_cents": "0",
+              "created" : 1361481930,
+              "last_updated" : 1361481930,
+              "meta" : {},
+            }
+
+### Remove a product [DELETE]
+Remove a product. **Warning** This will permantly delete a product, but will **not* remove orders for this product
+
++ Response 204
+
+# Group Checkout
+This API allows you to generate a checkout token and then capture an order using this token.
+
+## Generate checkout & create an order [/checkout/{product_id}]
+
+### Generate a checkout token [GET]
+Generate a checkout token which loads relevent product data needed to create your checkout. 
+
+I.E do you need to collect a shipping address, shipping options, extra fields and variants required etc... as well as information about the seller to display to customers. 
+
++ Response 201 (application/json)
+
+           {
+              "checkout_token": "chkt_44gNTrJoM7nu9J",
+              "expires": 1401008421,
+              "product_id": "PRO_jFHenG23Rg",
+              "merchant_id": "MER_jFHenG23Rg",
+              "key": "d9pTst",
+              "active": "1",
+              "name": "123",
+              "currency": "USD",
+              "desc": "",
+              "price": "32100",
+              "formatted_price": "$321",
+              "formatted_price_with_currency_code": "$310 USD",
+              "quantity": 10,
+              "image": "images.communly.com/product_image.png",
+              "extra_fields": [
+                { "field_id": "EF_Nnf84oKef",
+                  "name": "Contact Name",
+                  "required": true
+                },
+                {  
+                  "field_id": "EF_Nnf8787gGZ",
+                  "name": "Contact Number",
+                  "required": true
+                }
+              ],
+              "pay_what_you_want": false,
+              "shipping_options": {
+                "options": [
+                  { "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "UPS Airmail",
+                    "price": 2000,
+                    "region": "international"
+                  },
+                  { 
+                  "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "UPS Ground",
+                    "price": 100,
+                    "region": "local"
+                  },
+                  {
+                  "shipping_option_id": "MER_jFHenG23Rg",
+                    "description": "Free",
+                    "price": 0,
+                    "region": "everywhere"
+                  }
+                ]
+              },
+              "variants": [
+                {"variant_id": "VAR_Nnf84oKef",
+                  "category_name": "T-Shirt Size",
+                  "options": {
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Small",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Medium",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Large",
+                      "plus_amount": 0,
+                      "quantity" : 1000
+                    }
+                  }
+                },
+                {"variant_id": "VAR_Nnf84oKef",
+                  "category_name": "T-Shirt Style",
+                  "options": {
+                    {   
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Special Edition",
+                      "plus_amount": 1000,
+                       "quantity" : 10
+                    },
+                    {
+                    "option_id": "MER_jFHenG23Rg",
+                      "name": "Standard",
+                      "plus_amount": 0,
+                       "quantity" : 100
+                    }
+                  }
+                }
+              ],
+              "is_this_a_download": true,
+              "collect_shipping_details": true,
+              "quantity_limited": true,
+              "merchant_locked": false,
+              "sellers_name": "CJ Tate",
+              "sellers_email": "cjtate@gmail.com",
+              "street_address": "1001 Balling St",
+              "town_city": "Racks on Racks",
+              "county_state": "RacksOnRackshire",
+              "postal_zip_code": "94107",
+              "country": "US",
+              "product.meta" : {}
+              "merchant.meta" {}
+            }
+        
+### Create order from checkout token [POST]
+Once you have collected data for the checkout, you need to send this data to Chec to capture the order and charge the credit card. We will preform server side validation and return a displayable error if something is wrong.
+
++ Request (application/json)
+
+             {
+                  "checkout_token": "chkt_44gNTrJoM7nu9J",
+                  "customer": {
+                    "first_name": "Devan",
+                    "last_name": "Koshal",
+                    "email": "devan.koshal@gmail.com",
+                    "shipping": {
+                      "street": "68 Kingsway",
+                      "town_city": "Northampton",
+                      "county_state": "Northamptonshire",
+                      "postal_zip_code": "NN28HF",
+                      "country": "UK"
+                    },
+                    "extra_fields": [
+                      {
+                        "field_id": "EF_jj4F29gGds",
+                        "value": "Extra Field Value"
+                      },
+                      {
+                        "field_id": "EF_Nnf84oKef",
+                        "value": "Extra Field Value 2"
+                      }
+                    ]
+                  },
+                  "order": {
+                    "quantity": 1,
+                    "shipping_method": "SP_jGNu48Ghu",
+                    "variants": [
+                      {
+                        "variant_id": "VAR_jj4F29gGds",
+                        "option_id": "OPT_jj45ggbK42"
+                      },
+                      {
+                        "variant_id": "VAR_Nnf84oKef",
+                        "option_id": "OPT_jj4KlMFGU42"
+                      }
+                    ],
+                    "customer_set_price": null,
+                    "discount_code": "ALAXICBAE2014"
+                  },
+                  "card" : {
+                      
+                      "card_number" : "4242424242424242",
+                      "exp_month" : "02",
+                      "exp_year" : "2015",
+                      "cvc" : "123",
+                      "name_on_card" : null,
+                      "billing_street" : null,
+                      "billing_zip_postal_code" : null
+                      
+                  },
+                  meta: {},
+                }
+
++ Response 201 (application/json)
+
+        { "receipt_id": "re_Ermngd342", "order_id" : "or_gsdG43pe", "success": true }
+        
+## Check discount code, quantity, & pay what you want price [/checkout/{product_id}/check]
+
+### Validate discount code, quantity, or pay what you want price [GET]  
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+## Retrieve shipping options available for selected country [/checkout/{product_id}/shipping_options]
+
+### Retrieve available shipping options [GET]  
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+# Group Orders
+The API allows you to add, delete, refund, and update orders. 
+
+## Orders [/orders]
+
+### List orders [GET] 
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+## Order Resources [/orders/{id}]
+
+### Retrieve an order [GET] 
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+### Refund an order [POST]
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+### Remove an order [DELETE]
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+### Update an order [PUT]
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+# Group Payouts
+This API allows you retrieve information about payouts, and update a merchants payout data.
+
+## Payouts [/payouts/{merchant_id}]
+
+### Retrieve payout data for a merchant [GET] 
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
+### Set/update payout settings [PUT]
+Set & Update a merchants paypal settings.
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+        {}
+
