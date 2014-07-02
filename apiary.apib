@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://api.trychec.com/marketplace
+HOST: https://api.stage.trychec.com/marketplace
 
 # Chec Marketplace API (Beta) 
 Chec's marketplace API allows you to integrate ecommerce into your application/platform without having to build out your own ecommerce solution. 
@@ -15,34 +15,39 @@ List all merchants on your marketplace.
 
 + Response 200 (application/json)
 
-        [{
-            "merchant_id": "MER_jFHenG23Rg",
-            "currency": "USD",
-            "sellers_name": "CJ Tate",
-            "sellers_email": "cjtate@gmail.com",
-            "street_address": "1001 Balling St",
-            "town_city": "Racks on Racks",
-            "county_state": "RacksOnRackshire",
-            "postal_zip_code": "94107",
-            "country": "US",
-            "locked": null,
-            "locked_reason": null,
-            "meta": {},
-        },
-        {
-            "merchant_id": "MER_jFHGe663Rg",
-            "currency": "GBP",
-            "sellers_name": "Devan",
-            "sellers_email": "devan@madebyswipe.com",
-            "street_address": "68 Kingsway",
-            "town_city": "Northampton",
-            "county_state": "Northamptonshire",
-            "postal_zip_code": "NN28HF",
-            "country": "GB",
-            "locked": null,
-            "locked_reason": null,
-            "meta": {},
-        }, {...}, {...}]
+                [
+                  {
+                    "id" : "mer_50wUDhi5zHey47",
+                    "county_state" : "CA",
+                    "currency" : "USD",
+                    "last_updated" : "1404288979",
+                    "locked_reason" : null,
+                    "town_city" : "San Francisco",
+                    "seller_email" : "d@madebyswipe.com",
+                    "locked" : null,
+                    "created" : "1404288979",
+                    "meta" : "{}",
+                    "postal_zip_code" : "94107",
+                    "street_address" : "1001 Mariposa St",
+                    "country" : "US",
+                    "seller_name" : "Devan Koshalll"
+                  },
+                  {
+                    "id" : "mer_50hqDIvZi5ru44",
+                    "county_state" : "CA",
+                    "currency" : "USD",
+                    "last_updated" : "1404288978",
+                    "locked_reason" : null,
+                    "town_city" : "San Francisco",
+                    "seller_email" : "d@madebyswipe.com",
+                    "locked" : null,
+                    "created" : "1404288978",
+                    "meta" : "{}",
+                    "postal_zip_code" : "94107",
+                    "street_address" : "1001 Mariposa St",
+                    "country" : "US",
+                    "seller_name" : "Devan Koshalll"
+                  }, {...}, {...}]
         
 ### Create a new merchant [POST]
 Add a new merchant to your marketplace
@@ -66,7 +71,7 @@ Add a new merchant to your marketplace
 + Response 201 (application/json)
 
         {
-            "merchant_id": "MER_jFHenG23Rg",
+            "id": "MER_jFHenG23Rg",
             "currency": "USD",
             "sellers_name": "CJ Tate",
             "sellers_email": "cjtate@gmail.com",
@@ -75,8 +80,8 @@ Add a new merchant to your marketplace
             "county_state": "RacksOnRackshire",
             "postal_zip_code": "94107",
             "country": "US",
-            "locked": null,
-            "locked_reason": null,
+            "locked": false,
+            "locked_reason": false,
             "meta": {
                     "communly_id": 123,
                     "other_meta_data": 321
@@ -84,6 +89,8 @@ Add a new merchant to your marketplace
             "created" : 1361481930,
             "last_updated" 1361481930,
         }
+        
+
 
 ## Merchant Resources [/merchants/{merchant_id}]  
 
@@ -93,7 +100,7 @@ Retrieve a merchants details
 + Response 200 (application/json)
 
         {
-            "merchant_id": "MER_jFHenG23Rg",
+            "id": "MER_jFHenG23Rg",
             "currency": "USD",
             "sellers_name": "CJ Tate",
             "sellers_email": "cjtate@gmail.com",
@@ -102,8 +109,8 @@ Retrieve a merchants details
             "county_state": "RacksOnRackshire",
             "postal_zip_code": "94107",
             "country": "US",
-            "locked": null,
-            "locked_reason": null,
+            "locked": false,
+            "locked_reason": false,
             "meta": {
                     "communly_id": 123,
                     "other_meta_data": 321
@@ -158,7 +165,7 @@ Update a merchants details
         
 ### Remove a merchant [DELETE]
 
-+ Response 204 
++ Response 201 
 
 # Group Products
 The API allows you to list, add, delete, and update your merchants products.
