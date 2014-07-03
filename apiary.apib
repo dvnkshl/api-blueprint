@@ -189,8 +189,6 @@ List products for an individual merchant, returns only essential data.
               "last_updated" : 1361481930,
               "meta" : {},
             }, {...}, {...}]
-        
-## Create a product [/products/{merchant_id]
 
 ### Create a product [POST]
 Create a product 
@@ -198,7 +196,6 @@ Create a product
 + Request (application/json)
 
         {
-          "merchant_id": "mer_51sQ1GuaJKWl13",
           "name": "Dummy Product Name",
           "description": "This is my test description",
           "price": "32156",
@@ -307,7 +304,7 @@ Create a product
         }
 
 
-## Product Resources [/products/{product_id}]
+## Product Resources [/products/{merchant_id}/{product_id}]
 
 ### Retrieve a product [GET]
 Retrieve a merchant's product
