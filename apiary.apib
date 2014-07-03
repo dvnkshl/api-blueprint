@@ -198,404 +198,177 @@ Create a product
 + Request (application/json)
 
         {
-              "name": "Dummy Product Name",
-              "desc": null,
-              "price": "32100",
-              "limited_quantity": true,
-              "quantity": 10,
-              "image": "cdn.communly.com/product_image.png",
-              "collect_shipping_address": false,
-              "extra_fields": [
-                {
-                  "name": "Contact Name",
-                  "required": true
-                },
-                {
-                  "name": "Contact Number",
-                  "required": false
-                }
-              ],
-              "pay_what_you_want": null,
-              "shipping_options": {
-                "enabled": true,
-                "options": [
-                  {
-                    "description": "UPS Airmail",
-                    "price": 2000,
-                    "region": "international"
-                  },
-                  {
-                    "description": "UPS Ground",
-                    "price": 100,
-                    "region": "local"
-                  },
-                  {
-                    "description": "Free",
-                    "price": 0,
-                    "region": "everywhere"
-                  }
-                ]
-              },
-              "digital_delivery": {
-                "enabled": true,
-                "access_window": 
-                  {
-                    "expires": true,
-                    "duration": 1,
-                    "duration_period" : "weeks",
-                    "how_many_times": 10
-                  },
-                "files_links": [
-                  {
-                    "type": "url",
-                    "link": "http://cjtate.com/access",
-                    "info": "Access your exclusive content"
-                  },
-                  {
-                    "description": "download",
-                    "link": "http://cdn.communly.com/cj_tate.mp3",
-                    "info": "MP3 Audio File"
-                  },
-                  {
-                    "description": "download",
-                    "link": "http://cdn.communly.com/cj_tate.mp4",
-                    "info": "MP4 Video"
-                  }
-                ]
-              },
-              "variants": [
-                {
-                  "category_name": "T-Shirt Size",
-                  "options": {
-                    "0": {
-                      "name": "Small",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    "1": {
-                      "name": "Medium",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    "2": {
-                      "name": "Large",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    }
-                  }
-                },
-                {
-                  "category_name": "T-Shirt Style",
-                  "options": {
-                    "0": {
-                      "name": "Special Edition",
-                      "plus_amount": 1000,
-                       "quantity" : 10
-                    },
-                    "1": {
-                      "name": "Standard",
-                      "plus_amount": 0,
-                       "quantity" : 100
-                    }
-                  }
-                }
-              ],
-            "discount_codes": [
-                      {
-                        "code": "15DOLLAR$OFF",
-                        "minus_amount": 1500,
-                        "quantity" : "unlimited"
-                      },
-                      {
-                        "code": "35DOLLAR$OFF",
-                        "minus_amount": 3000,
-                        "quantity" : 5
-                      }
-                    ],
-              "meta" : {},
+          "merchant_id": "mer_51sQ1GuaJKWl13",
+          "name": "Dummy Product Name",
+          "description": "This is my test description",
+          "price": "32156",
+          "limited_quantity": true,
+          "quantity": 10,
+          "image": "cdn.communly.com/product_image.png",
+          "collect_shipping_address": false,
+          "extra_fields": [
+            {
+              "name": "Contact Name",
+              "required": true
+            },
+            {
+              "name": "Contact Number",
+              "required": false
             }
+          ],
+          "pay_what_you_want": false,
+          "digital_delivery": {
+            "enabled": true,
+            "access_window": {
+              "expires": true,
+              "duration": 1,
+              "duration_period": "weeks",
+              "how_many_times": 10
+            },
+            "files_links": [
+              {
+                "type": "url",
+                "link": "http://cjtate.com/access",
+                "info": "Access your exclusive content"
+              },
+              {
+                "description": "download",
+                "link": "http://cdn.communly.com/cj_tate.mp3",
+                "info": "MP3 Audio File"
+              },
+              {
+                "description": "download",
+                "link": "http://cdn.communly.com/cj_tate.mp4",
+                "info": "MP4 Video"
+              }
+            ]
+          },
+          "meta": []
+        }
 
 + Response 201 (application/json)
 
         {
-              "product_id": "PRO_jFHenG23Rg",
-              "merchant_id": "MER_jFHenG23Rg",
-              "key": "d9pTst",
-              "active": "1",
-              "name": "123",
-              "desc": "",
-              "price": "32100",
-              "formatted_price": "$321",
-              "formatted_price_with_currency_code": "$310 USD",
-              "limited_quantity": true,
-              "quantity": 10,
-              "image": "images.communly.com/product_image.png",
-              "collect_shipping_address": false,
-              "extra_fields": [
-                { "field_id": "EF_Nnf84oKef",
-                  "name": "Contact Name",
-                  "required": true
-                },
-                {  
-                  "field_id": "EF_Nnf8787gGZ",
-                  "name": "Contact Number",
-                  "required": true
-                }
-              ],
-              "pay_what_you_want": null,
-              "shipping_options": {
-                "enabled": true,
-                "options": [
-                  { "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "UPS Airmail",
-                    "price": 2000,
-                    "region": "international"
-                  },
-                  { 
-                  "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "UPS Ground",
-                    "price": 100,
-                    "region": "local"
-                  },
-                  {
-                  "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "Free",
-                    "price": 0,
-                    "region": "everywhere"
-                  }
-                ]
+          "created": true,
+          "product": {
+            "id": "prod_23Rtidc2TeYz12",
+            "key": "If333I",
+            "active": "1",
+            "name": "Dummy Product Name",
+            "description": "This is my test description",
+            "quantity": "10",
+            "price": "32156",
+            "images": [
+              "cdn.communly.com/product_image.png"
+            ],
+            "extra_fields": [
+              {
+                "name": "Contact Name",
+                "required": "1"
               },
-              "digital_delivery": {
-                "enabled": true,
-                "access_window": 
-                  {
-                    "expires": true,
-                    "duration": 1,
-                    "duration_period" : "weeks",
-                    "how_many_times": 10
-                  },
-                "files_links": [
-                  {
-                    "type": "url",
-                    "link": "http://cjtate.com/access",
-                    "info": "Access your exclusive content"
-                  },
-                  {
-                    "description": "download",
-                    "link": "http://cdn.communly.com/cj_tate.mp3",
-                    "info": "MP3 Audio File"
-                  },
-                  {
-                    "description": "download",
-                    "link": "http://cdn.communly.com/cj_tate.mp4",
-                    "info": "MP4 Video"
-                  }
-                ]
+              {
+                "name": "Contact Number",
+                "required": "0"
+              }
+            ],
+            "created": "1404381880",
+            "last_updated": "1404381880",
+            "meta": null,
+            "pay_what_you_want": "0",
+            "limited_quantity": "1",
+            "collect_shipping_address": null,
+            "digital_delivery": {
+              "enabled": "1",
+              "access_window": {
+                "expires": "1",
+                "duration": "1",
+                "duration_period": "weeks",
+                "how_many_times": "10"
               },
-              "variants": [
-                {"variant_id": "VAR_Nnf84oKef",
-                  "category_name": "T-Shirt Size",
-                  "options": {
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Small",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Medium",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Large",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    }
-                  }
+              "files_links": [
+                {
+                  "type": "url",
+                  "link": "http://cjtate.com/access",
+                  "info": "Access your exclusive content"
                 },
-                {"variant_id": "VAR_Nnf84oKef",
-                  "category_name": "T-Shirt Style",
-                  "options": {
-                    {   
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Special Edition",
-                      "plus_amount": 1000,
-                       "quantity" : 10
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Standard",
-                      "plus_amount": 0,
-                       "quantity" : 100
-                    }
-                  }
+                {
+                  "description": "download",
+                  "link": "http://cdn.communly.com/cj_tate.mp3",
+                  "info": "MP3 Audio File"
+                },
+                {
+                  "description": "download",
+                  "link": "http://cdn.communly.com/cj_tate.mp4",
+                  "info": "MP4 Video"
                 }
-              ],
-            "discount_codes": [
-                      {
-                        "code": "15DOLLAR$OFF",
-                        "minus_amount": 1500,
-                        "quantity" : "unlimited"
-                      },
-                      {
-                        "code": "35DOLLAR$OFF",
-                        "minus_amount": 3000,
-                        "quantity" : 5
-                      }
-                    ],
-              "sales_count": "0",
-              "sales_usd_cents": "0",
-              "created" : 1361481930,
-              "last_updated" : 1361481930,
-              "meta" : {},
+              ]
             }
+          }
+        }
 
 
-## Product Resources [/products/{merchant_id}/{product_id}]
+## Product Resources [/products/{product_id}]
 
 ### Retrieve a product [GET]
 Retrieve a merchant's product
 
 + Response 201 (application/json)
 
+        {
+            "id": "prod_23Rtidc2TeYz12",
+            "key": "If333I",
+            "active": "1",
+            "name": "Dummy Product Name",
+            "description": "This is my test description",
+            "quantity": "10",
+            "price": "32156",
+            "images": [
+              "cdn.communly.com/product_image.png"
+            ],
+            "extra_fields": [
+              {
+                "name": "Contact Name",
+                "required": "1"
+              },
+              {
+                "name": "Contact Number",
+                "required": "0"
+              }
+            ],
+            "created": "1404381880",
+            "last_updated": "1404381880",
+            "meta": null,
+            "pay_what_you_want": "0",
+            "limited_quantity": "1",
+            "collect_shipping_address": null,
+            "digital_delivery": {
+              "enabled": "1",
+              "access_window": {
+                "expires": "1",
+                "duration": "1",
+                "duration_period": "weeks",
+                "how_many_times": "10"
+              },
+              "files_links": [
                 {
-              "product_id": "PRO_jFHenG23Rg",
-              "merchant_id": "MER_jFHenG23Rg",
-              "key": "d9pTst",
-              "active": "1",
-              "name": "123",
-              "desc": "",
-              "price": "32100",
-              "formatted_price": "$321",
-              "formatted_price_with_currency_code": "$310 USD",
-              "limited_quantity": true,
-              "quantity": 10,
-              "image": "images.communly.com/product_image.png",
-              "collect_shipping_address": false,
-              "extra_fields": [
-                { "field_id": "EF_Nnf84oKef",
-                  "name": "Contact Name",
-                  "required": true
+                  "type": "url",
+                  "link": "http://cjtate.com/access",
+                  "info": "Access your exclusive content"
                 },
-                {  
-                  "field_id": "EF_Nnf8787gGZ",
-                  "name": "Contact Number",
-                  "required": true
-                }
-              ],
-              "pay_what_you_want": null,
-              "shipping_options": {
-                "enabled": true,
-                "options": [
-                  { "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "UPS Airmail",
-                    "price": 2000,
-                    "region": "international"
-                  },
-                  { 
-                  "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "UPS Ground",
-                    "price": 100,
-                    "region": "local"
-                  },
-                  {
-                  "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "Free",
-                    "price": 0,
-                    "region": "everywhere"
-                  }
-                ]
-              },
-              "digital_delivery": {
-                "enabled": true,
-                "access_window": 
-                  {
-                    "expires": true,
-                    "duration": 1,
-                    "duration_period" : "weeks",
-                    "how_many_times": 10
-                  },
-                "files_links": [
-                  {
-                    "type": "url",
-                    "link": "http://cjtate.com/access",
-                    "info": "Access your exclusive content"
-                  },
-                  {
-                    "description": "download",
-                    "link": "http://cdn.communly.com/cj_tate.mp3",
-                    "info": "MP3 Audio File"
-                  },
-                  {
-                    "description": "download",
-                    "link": "http://cdn.communly.com/cj_tate.mp4",
-                    "info": "MP4 Video"
-                  }
-                ]
-              },
-              "variants": [
-                {"variant_id": "VAR_Nnf84oKef",
-                  "category_name": "T-Shirt Size",
-                  "options": {
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Small",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Medium",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Large",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    }
-                  }
+                {
+                  "description": "download",
+                  "link": "http://cdn.communly.com/cj_tate.mp3",
+                  "info": "MP3 Audio File"
                 },
-                {"variant_id": "VAR_Nnf84oKef",
-                  "category_name": "T-Shirt Style",
-                  "options": {
-                    {   
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Special Edition",
-                      "plus_amount": 1000,
-                       "quantity" : 10
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Standard",
-                      "plus_amount": 0,
-                       "quantity" : 100
-                    }
-                  }
+                {
+                  "description": "download",
+                  "link": "http://cdn.communly.com/cj_tate.mp4",
+                  "info": "MP4 Video"
                 }
-              ],
-            "discount_codes": [
-                      {
-                        "code": "15DOLLAR$OFF",
-                        "minus_amount": 1500,
-                        "quantity" : "unlimited"
-                      },
-                      {
-                        "code": "35DOLLAR$OFF",
-                        "minus_amount": 3000,
-                        "quantity" : 5
-                      }
-                    ],
-              "sales_count": "0",
-              "sales_usd_cents": "0",
-              "created" : 1361481930,
-              "last_updated" : 1361481930,
-              "meta" : {},
+              ]
             }
+          }
+        
 
 ### Update a product [PUT]
 Update a merchant's product
@@ -603,260 +376,74 @@ Update a merchant's product
 + Request (application/json)
 
         {
-              "name": "123",
-              "desc": "",
-              "price": "32100",
-              "limited_quantity": true,
-              "quantity": 10,
-              "image": "cdn.communly.com/product_image.png",
-              "collect_shipping_address": false,
-              "extra_fields": [
-                {
-                  "name": "Contact Name",
-                  "required": true
-                },
-                {
-                  "name": "Contact Number",
-                  "required": false
-                }
-              ],
-              "pay_what_you_want": null,
-              "shipping_options": {
-                "enabled": true,
-                "options": [
-                  {
-                    "description": "UPS Airmail",
-                    "price": 2000,
-                    "region": "international"
-                  },
-                  {
-                    "description": "UPS Ground",
-                    "price": 100,
-                    "region": "local"
-                  },
-                  {
-                    "description": "Free",
-                    "price": 0,
-                    "region": "everywhere"
-                  }
-                ]
-              },
-              "digital_delivery": {
-                "enabled": true,
-                "access_window": 
-                  {
-                    "expires": true,
-                    "duration": 2,
-                    "duration_period" : "months",
-                    "how_many_times": 10
-                  },
-                "files_links": [
-                  {
-                    "type": "url",
-                    "link": "http://cjtate.com/access",
-                    "info": "Access your exclusive content"
-                  },
-                  {
-                    "description": "download",
-                    "link": "http://cdn.communly.com/cj_tate.mp3",
-                    "info": "MP3 Audio File"
-                  },
-                  {
-                    "description": "download",
-                    "link": "http://cdn.communly.com/cj_tate.mp4",
-                    "info": "MP4 Video"
-                  }
-                ]
-              },
-              "variants": [
-                {
-                  "category_name": "T-Shirt Size",
-                  "options": {
-                    "0": {
-                      "name": "Small",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    "1": {
-                      "name": "Medium",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    "2": {
-                      "name": "Large",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    }
-                  }
-                },
-                {
-                  "category_name": "T-Shirt Style",
-                  "options": {
-                    "0": {
-                      "name": "Special Edition",
-                      "plus_amount": 1000,
-                       "quantity" : 10
-                    },
-                    "1": {
-                      "name": "Standard",
-                      "plus_amount": 0,
-                       "quantity" : 100
-                    }
-                  }
-                }
-              ],
-            "discount_codes": [
-                      {
-                        "code": "15DOLLAR$OFF",
-                        "minus_amount": 1500,
-                        "quantity" : "unlimited"
-                      },
-                      {
-                        "code": "35DOLLAR$OFF",
-                        "minus_amount": 3000,
-                        "quantity" : 5
-                      }
-                    ],
-              "meta" : {},
-            }
+          "merchant_id": "mer_51sQ1GuaJKWl13",
+          "name": "New Dummy Product Name",
+          "description": "This is new my test description",
+          "price": "32156",
+          "limited_quantity": true,
+          "quantity": 10,
+          "collect_shipping_address": false
+        }
 
 + Response 201 (application/json)
 
+         {
+          "updated": true,
+          "product": {
+            "id": "prod_23Rtidc2TeYz12",
+            "key": "If333I",
+            "active": "1",
+            "name": "New Dummy Product Name",
+            "description": "This is new my test description",
+            "quantity": "10",
+            "price": "32156",
+            "images": [
+              "cdn.communly.com/product_image.png"
+            ],
+            "extra_fields": [
+              {
+                "name": "Contact Name",
+                "required": "1"
+              },
+              {
+                "name": "Contact Number",
+                "required": "0"
+              }
+            ],
+            "created": "1404381880",
+            "last_updated": "1404381880",
+            "meta": null,
+            "pay_what_you_want": "0",
+            "limited_quantity": "1",
+            "collect_shipping_address": null,
+            "digital_delivery": {
+              "enabled": "1",
+              "access_window": {
+                "expires": "1",
+                "duration": "1",
+                "duration_period": "weeks",
+                "how_many_times": "10"
+              },
+              "files_links": [
                 {
-              "product_id": "PRO_jFHenG23Rg",
-              "merchant_id": "MER_jFHenG23Rg",
-              "key": "d9pTst",
-              "active": "1",
-              "name": "123",
-              "desc": "",
-              "price": "32100",
-              "formatted_price": "$321",
-              "formatted_price_with_currency_code": "$310 USD",
-              "limited_quantity": true,
-              "quantity": 10,
-              "image": "images.communly.com/product_image.png",
-              "collect_shipping_address": false,
-              "extra_fields": [
-                { "field_id": "EF_Nnf84oKef",
-                  "name": "Contact Name",
-                  "required": true
+                  "type": "url",
+                  "link": "http://cjtate.com/access",
+                  "info": "Access your exclusive content"
                 },
-                {  
-                  "field_id": "EF_Nnf8787gGZ",
-                  "name": "Contact Number",
-                  "required": true
-                }
-              ],
-              "pay_what_you_want": null,
-              "shipping_options": {
-                "enabled": true,
-                "options": [
-                  { "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "UPS Airmail",
-                    "price": 2000,
-                    "region": "international"
-                  },
-                  { 
-                  "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "UPS Ground",
-                    "price": 100,
-                    "region": "local"
-                  },
-                  {
-                  "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "Free",
-                    "price": 0,
-                    "region": "everywhere"
-                  }
-                ]
-              },
-              "digital_delivery": {
-                "enabled": true,
-                "access_window": 
-                  {
-                    "expires": true,
-                    "duration": 1,
-                    "duration_period" : "weeks",
-                    "how_many_times": 10
-                  },
-                "files_links": [
-                  {
-                    "type": "url",
-                    "link": "http://cjtate.com/access",
-                    "info": "Access your exclusive content"
-                  },
-                  {
-                    "description": "download",
-                    "link": "http://cdn.communly.com/cj_tate.mp3",
-                    "info": "MP3 Audio File"
-                  },
-                  {
-                    "description": "download",
-                    "link": "http://cdn.communly.com/cj_tate.mp4",
-                    "info": "MP4 Video"
-                  }
-                ]
-              },
-              "variants": [
-                {"variant_id": "VAR_Nnf84oKef",
-                  "category_name": "T-Shirt Size",
-                  "options": {
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Small",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Medium",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Large",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    }
-                  }
+                {
+                  "description": "download",
+                  "link": "http://cdn.communly.com/cj_tate.mp3",
+                  "info": "MP3 Audio File"
                 },
-                {"variant_id": "VAR_Nnf84oKef",
-                  "category_name": "T-Shirt Style",
-                  "options": {
-                    {   
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Special Edition",
-                      "plus_amount": 1000,
-                       "quantity" : 10
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Standard",
-                      "plus_amount": 0,
-                       "quantity" : 100
-                    }
-                  }
+                {
+                  "description": "download",
+                  "link": "http://cdn.communly.com/cj_tate.mp4",
+                  "info": "MP4 Video"
                 }
-              ],
-            "discount_codes": [
-                      {
-                        "code": "15DOLLAR$OFF",
-                        "minus_amount": 1500,
-                        "quantity" : "unlimited"
-                      },
-                      {
-                        "code": "35DOLLAR$OFF",
-                        "minus_amount": 3000,
-                        "quantity" : 5
-                      }
-                    ],
-              "sales_count": "0",
-              "sales_usd_cents": "0",
-              "created" : 1361481930,
-              "last_updated" : 1361481930,
-              "meta" : {},
+              ]
             }
+          }
+        }
 
 ### Remove a product [DELETE]
 Remove a product. **Warning** This will permantly delete a product, but will **not* remove orders for this product
