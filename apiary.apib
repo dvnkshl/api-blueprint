@@ -449,7 +449,7 @@ Remove a product. **Warning** This will permantly delete a product, but will **n
 # Group Checkout
 This API allows you to generate a checkout token and then capture an order using this token.
 
-## Generate checkout & create an order [/checkout/{product_id}]
+## Generate checkout & create an order [/checkout/{merchant_id}/{product_id}]
 
 ### Generate a checkout token [GET]
 Generate a checkout token which loads relevent product data needed to create your checkout. 
@@ -459,108 +459,56 @@ I.E do you need to collect a shipping address, shipping options, extra fields an
 + Response 201 (application/json)
 
            {
-              "checkout_token": "chkt_44gNTrJoM7nu9J",
-              "expires": 1401008421,
-              "product_id": "PRO_jFHenG23Rg",
-              "merchant_id": "MER_jFHenG23Rg",
-              "key": "d9pTst",
-              "active": "1",
-              "name": "123",
-              "currency": "USD",
-              "desc": "",
-              "price": "32100",
-              "formatted_price": "$321",
-              "formatted_price_with_currency_code": "$310 USD",
-              "quantity": 10,
-              "image": "images.communly.com/product_image.png",
-              "extra_fields": [
-                { "field_id": "EF_Nnf84oKef",
-                  "name": "Contact Name",
-                  "required": true
-                },
-                {  
-                  "field_id": "EF_Nnf8787gGZ",
-                  "name": "Contact Number",
-                  "required": true
-                }
-              ],
-              "pay_what_you_want": false,
-              "shipping_options": {
-                "options": [
-                  { "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "UPS Airmail",
-                    "price": 2000,
-                    "region": "international"
-                  },
-                  { 
-                  "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "UPS Ground",
-                    "price": 100,
-                    "region": "local"
-                  },
-                  {
-                  "shipping_option_id": "MER_jFHenG23Rg",
-                    "description": "Free",
-                    "price": 0,
-                    "region": "everywhere"
-                  }
-                ]
+              "checkout_token": "chkt_1XGdbRAWQLY",
+              "expires": 1404478268,
+              "product": {
+                "id": "prod_23TZDoJyxkQ616",
+                "name": "Dummy Product Name",
+                "description": "This is my test description",
+                "quantity": "10",
+                "price": "32156",
+                "images": [
+                  "cdn.communly.com/product_image.png"
+                ],
+                "formatted_price": "$321.56",
+                "formatted_price_with_currency_code": "$321.56 USD"
               },
-              "variants": [
-                {"variant_id": "VAR_Nnf84oKef",
-                  "category_name": "T-Shirt Size",
-                  "options": {
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Small",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Medium",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Large",
-                      "plus_amount": 0,
-                      "quantity" : 1000
-                    }
-                  }
+              "merchant": {
+                "id": "mer_51sQ1GuaJKWl13",
+                "seller_name": "CJ Tate",
+                "seller_email": "cjtate@gmail.com",
+                "currency": "USD",
+                "street_address": "1001 Balling St",
+                "town_city": "Racks on Racks",
+                "county_state": "RacksOnRackshire",
+                "postal_zip_code": "94107",
+                "country": "US"
+              },
+              "conditionals": {
+                "pay_what_you_want": "0",
+                "shipping_options_available": null,
+                "digital_goods": "1",
+                "collect_shipping_address": null,
+                "limited_quantity": "1"
+              },
+              "extra_fields": [
+                {
+                  "name": "Contact Name",
+                  "required": "1"
                 },
-                {"variant_id": "VAR_Nnf84oKef",
-                  "category_name": "T-Shirt Style",
-                  "options": {
-                    {   
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Special Edition",
-                      "plus_amount": 1000,
-                       "quantity" : 10
-                    },
-                    {
-                    "option_id": "MER_jFHenG23Rg",
-                      "name": "Standard",
-                      "plus_amount": 0,
-                       "quantity" : 100
-                    }
-                  }
+                {
+                  "name": "Contact Number",
+                  "required": "0"
                 }
               ],
-              "is_this_a_download": true,
-              "collect_shipping_details": true,
-              "quantity_limited": true,
-              "merchant_locked": false,
-              "sellers_name": "CJ Tate",
-              "sellers_email": "cjtate@gmail.com",
-              "street_address": "1001 Balling St",
-              "town_city": "Racks on Racks",
-              "county_state": "RacksOnRackshire",
-              "postal_zip_code": "94107",
-              "country": "US",
-              "product.meta" : {}
-              "merchant.meta" {}
+              "product.meta": {
+                "communly_id": "123",
+                "other_meta_data": "321"
+              },
+              "merchant.meta": {
+                "communly_id": "123",
+                "other_meta_data": "321"
+              }
             }
         
 ### Create order from checkout token [POST]
