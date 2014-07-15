@@ -561,56 +561,83 @@ Once you have collected data for the checkout, you need to send this data to Che
 
 + Response 201 (application/json)
 
-        [{
-           "success":true,
-           "order":{
-              "id":"ord_34actmgLYDS4",
-              "merchant_id":"mer_51sQ1GuaJKWl13",
-              "buyer":{
-                 "first_name":"Devan",
-                 "last_name":"Koshal",
-                 "email":"devan.koshal@gmail.com",
-                 "address":{
-                    "street":"68 Kingsway",
-                    "town_city":"Northampton",
-                    "county_state":"Northamptonshire",
-                    "postal_zip_code":"NN28HF",
-                    "country":"UK"
-                 },
-                 "extra_fields":[{
-                    "name":"Extra Field 1",
-                    "value":"Value"
-                 },
-                 {
-                    "name":"Extra Field 2",
-                    "value":"Value"
-                 }]
+        [
+          {
+            "success": true,
+            "order": {
+              "id": "ord_41QlTpLXMIHx",
+              "merchant_id": "mer_51sQ1GuaJKWl13",
+              "buyer": {
+                "first_name": "Devan",
+                "last_name": "Koshal",
+                "email": "devan.koshal@gmail.com",
+                "address": {
+                  "street": "68 Kingsway",
+                  "town_city": "Northampton",
+                  "county_state": "Northamptonshire",
+                  "postal_zip_code": "NN28HF",
+                  "country": "UK"
+                },
+                "extra_fields": [
+                  {
+                    "name": "Extra Field 1",
+                    "value": "Value"
+                  },
+                  {
+                    "name": "Extra Field 2",
+                    "value": "Value"
+                  }
+                ]
               },
-              "product":{
-                 "name":"Dummy Product Name",
-                 "price":"$321.56"
+              "product": {
+                "name": "Dummy Product Name",
+                "price": "$321.56"
               },
-              "order":{
-                 "status":"1",
-                 "currency":"USD",
-                 "quantity":"3",
-                 "shipping_amount":"$0.00",
-                 "total":"$964.68",
-                 "total_charged_in_usd":"$964.68",
-                 "card_last4":"4242"
+              "order": {
+                "status": "1",
+                "currency": "USD",
+                "quantity": "1",
+                "shipping_amount": "$0.00",
+                "total": "$321.56",
+                "total_charged_in_usd": "$321.56",
+                "card_last4": "4242"
               },
-              "conditional":{
-                 "collect_shipping_address":"1",
-                 "digital_goods":"1",
-                 "shippable":null,
-                 "pay_what_you_want":"0"
+              "conditional": {
+                "collect_shipping_address": "1",
+                "digital_goods": "1",
+                "shippable": null,
+                "pay_what_you_want": "0"
               },
-              "created":"1405404980",
-              "meta":{
-                 "test":"123"
-              }
-           }
-        }]
+              "created": "1405417278",
+              "meta": {
+                "test": "123"
+              },
+              "delivery": [
+                {
+                  "type": "url",
+                  "info": "Access your exclusive content",
+                  "expires": 1406022079,
+                  "counter": "10",
+                  "access_url": "http://stage.ch.eckout.com/download/ord_41QlTpLXMIHx/7"
+                },
+                {
+                  "type": "download",
+                  "info": "MP3 Audio File",
+                  "expires": 1406022079,
+                  "counter": "10",
+                  "access_url": "http://stage.ch.eckout.com/download/ord_41QlTpLXMIHx/8"
+                },
+                {
+                  "type": "download",
+                  "info": "MP4 Video",
+                  "expires": 1406022079,
+                  "counter": "10",
+                  "access_url": "http://stage.ch.eckout.com/download/ord_41QlTpLXMIHx/9"
+                }
+              ]
+            }
+          }
+        ]
         
 ## Check discount code, quantity, & pay what you want price [/checkout/{product_id}/check]
 
