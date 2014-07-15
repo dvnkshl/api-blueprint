@@ -449,7 +449,7 @@ Remove a product. **Warning** This will permantly delete a product, but will **n
 # Group Checkout
 This API allows you to generate a checkout token and then capture an order using this token.
 
-## Generate checkout & create an order [/checkout/{merchant_id}/{product_id}]
+## Create a checkout token [/checkout/{merchant_id}/{product_id}]
 
 ### Generate a checkout token [GET]
 Generate a checkout token which loads relevent product data needed to create your checkout. 
@@ -510,64 +510,53 @@ I.E do you need to collect a shipping address, shipping options, extra fields an
                 "other_meta_data": "321"
               }
             }
-        
+            
+## Capture an order from a checkout token [/checkout/{checkout_token}]
+
 ### Create order from checkout token [POST]
 Once you have collected data for the checkout, you need to send this data to Chec to capture the order and charge the credit card. We will preform server side validation and return a displayable error if something is wrong.
 
 + Request (application/json)
 
              {
-                  "checkout_token": "chkt_44gNTrJoM7nu9J",
-                  "customer": {
+                  "buyer": {
                     "first_name": "Devan",
                     "last_name": "Koshal",
                     "email": "devan.koshal@gmail.com",
-                    "shipping": {
+                    "address": {
                       "street": "68 Kingsway",
                       "town_city": "Northampton",
                       "county_state": "Northamptonshire",
                       "postal_zip_code": "NN28HF",
                       "country": "UK"
+                    }
+                  },
+                  "extra_fields": [
+                    {
+                      "name": "Extra Field 1",
+                      "value": "Value"
                     },
-                    "extra_fields": [
-                      {
-                        "field_id": "EF_jj4F29gGds",
-                        "value": "Extra Field Value"
-                      },
-                      {
-                        "field_id": "EF_Nnf84oKef",
-                        "value": "Extra Field Value 2"
-                      }
-                    ]
-                  },
+                    {
+                      "name": "Extra Field 2",
+                      "value": "Value"
+                    }
+                  ],
                   "order": {
-                    "quantity": 1,
-                    "shipping_method": "SP_jGNu48Ghu",
-                    "variants": [
-                      {
-                        "variant_id": "VAR_jj4F29gGds",
-                        "option_id": "OPT_jj45ggbK42"
-                      },
-                      {
-                        "variant_id": "VAR_Nnf84oKef",
-                        "option_id": "OPT_jj4KlMFGU42"
-                      }
-                    ],
-                    "customer_set_price": null,
-                    "discount_code": "ALAXICBAE2014"
+                    "quantity": 3,
+                    "customer_set_price": null
                   },
-                  "card" : {
-                      
-                      "card_number" : "4242424242424242",
-                      "exp_month" : "02",
-                      "exp_year" : "2015",
-                      "cvc" : "123",
-                      "name_on_card" : null,
-                      "billing_street" : null,
-                      "billing_zip_postal_code" : null
-                      
+                  "card": {
+                    "number": "4242424242424242",
+                    "exp_month": "02",
+                    "exp_year": "2015",
+                    "cvc": "123",
+                    "name": null,
+                    "address_line1": null,
+                    "address_zip": null
                   },
-                  meta: {},
+                  "meta": {
+                    "test": 123
+                  }
                 }
 
 + Response 201 (application/json)
