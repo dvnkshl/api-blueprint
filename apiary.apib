@@ -572,7 +572,56 @@ Once you have collected data for the checkout, you need to send this data to Che
 
 + Response 201 (application/json)
 
-        { "receipt_id": "re_Ermngd342", "order_id" : "or_gsdG43pe", "success": true }
+        [{
+           "success":true,
+           "order":{
+              "id":"ord_34actmgLYDS4",
+              "merchant_id":"mer_51sQ1GuaJKWl13",
+              "buyer":{
+                 "first_name":"Devan",
+                 "last_name":"Koshal",
+                 "email":"devan.koshal@gmail.com",
+                 "address":{
+                    "street":"68 Kingsway",
+                    "town_city":"Northampton",
+                    "county_state":"Northamptonshire",
+                    "postal_zip_code":"NN28HF",
+                    "country":"UK"
+                 },
+                 "extra_fields":[{
+                    "name":"Extra Field 1",
+                    "value":"Value"
+                 },
+                 {
+                    "name":"Extra Field 2",
+                    "value":"Value"
+                 }]
+              },
+              "product":{
+                 "name":"Dummy Product Name",
+                 "price":"$321.56"
+              },
+              "order":{
+                 "status":"1",
+                 "currency":"USD",
+                 "quantity":"3",
+                 "shipping_amount":"$0.00",
+                 "total":"$964.68",
+                 "total_charged_in_usd":"$964.68",
+                 "card_last4":"4242"
+              },
+              "conditional":{
+                 "collect_shipping_address":"1",
+                 "digital_goods":"1",
+                 "shippable":null,
+                 "pay_what_you_want":"0"
+              },
+              "created":"1405404980",
+              "meta":{
+                 "test":"123"
+              }
+           }
+        }]
         
 ## Check discount code, quantity, & pay what you want price [/checkout/{product_id}/check]
 
@@ -599,27 +648,160 @@ Once you have collected data for the checkout, you need to send this data to Che
 # Group Orders
 The API allows you to add, delete, refund, and update orders. 
 
-## Orders [/orders]
+## Orders [/orders/{merchant_id}]
 
 ### List orders [GET] 
-+ Request (application/json)
 
-        {}
++ Response 200 (application/json)
 
-+ Response 201 (application/json)
+                   [ {
+                   "id":"ord_31yIfnztwxCg",
+                   "merchant_id":"mer_51sQ1GuaJKWl13",
+                   "buyer":{
+                      "first_name":"Devan",
+                      "last_name":"Koshal",
+                      "email":"devan.koshal@gmail.com",
+                      "address":{
+                         "street":"68 Kingsway",
+                         "town_city":"Northampton",
+                         "county_state":"Northamptonshire",
+                         "postal_zip_code":"NN28HF",
+                         "country":"UK"
+                      },
+                      "extra_fields":[{
+                         "name":"Extra Field 1",
+                         "value":"Value"
+                      },
+                      {
+                         "name":"Extra Field 2",
+                         "value":"Value"
+                      }]
+                   },
+                   "product":{
+                      "name":"Dummy Product Name",
+                      "price":"$321.56"
+                   },
+                   "order":{
+                      "status":"1",
+                      "currency":"USD",
+                      "quantity":"3",
+                      "shipping_amount":"$0.00",
+                      "total":"$964.68",
+                      "total_charged_in_usd":"964.68",
+                      "card_last4":"4242"
+                   },
+                   "conditional":{
+                      "collect_shipping_address":"1",
+                      "digital_goods":"1",
+                      "shippable":null,
+                      "pay_what_you_want":"0"
+                   },
+                   "created":"1405404739",
+                   "meta":{
+                      "test":"123"
+                   }
+                },
+                {
+                   "id":"ord_31yIfnztwxCg",
+                   "merchant_id":"mer_51sQ1GuaJKWl13",
+                   "buyer":{
+                      "first_name":"Devan",
+                      "last_name":"Koshal",
+                      "email":"devan.koshal@gmail.com",
+                      "address":{
+                         "street":"68 Kingsway",
+                         "town_city":"Northampton",
+                         "county_state":"Northamptonshire",
+                         "postal_zip_code":"NN28HF",
+                         "country":"UK"
+                      },
+                      "extra_fields":[{
+                         "name":"Extra Field 1",
+                         "value":"Value"
+                      },
+                      {
+                         "name":"Extra Field 2",
+                         "value":"Value"
+                      }]
+                   },
+                   "product":{
+                      "name":"Dummy Product Name",
+                      "price":"$321.56"
+                   },
+                   "order":{
+                      "status":"1",
+                      "currency":"USD",
+                      "quantity":"3",
+                      "shipping_amount":"$0.00",
+                      "total":"$964.68",
+                      "total_charged_in_usd":"964.68",
+                      "card_last4":"4242"
+                   },
+                   "conditional":{
+                      "collect_shipping_address":"1",
+                      "digital_goods":"1",
+                      "shippable":null,
+                      "pay_what_you_want":"0"
+                   },
+                   "created":"1405404739",
+                   "meta":{
+                      "test":"123"
+                   }
+                },{},{}...]
 
-        {}
-
-## Order Resources [/orders/{id}]
+## Order Resources [/orders/{merchant_id}/{id}]
 
 ### Retrieve an order [GET] 
-+ Request (application/json)
 
-        {}
++ Response 200 (application/json)
 
-+ Response 201 (application/json)
-
-        {}
+        {
+                   "id":"ord_31yIfnztwxCg",
+                   "merchant_id":"mer_51sQ1GuaJKWl13",
+                   "buyer":{
+                      "first_name":"Devan",
+                      "last_name":"Koshal",
+                      "email":"devan.koshal@gmail.com",
+                      "address":{
+                         "street":"68 Kingsway",
+                         "town_city":"Northampton",
+                         "county_state":"Northamptonshire",
+                         "postal_zip_code":"NN28HF",
+                         "country":"UK"
+                      },
+                      "extra_fields":[{
+                         "name":"Extra Field 1",
+                         "value":"Value"
+                      },
+                      {
+                         "name":"Extra Field 2",
+                         "value":"Value"
+                      }]
+                   },
+                   "product":{
+                      "name":"Dummy Product Name",
+                      "price":"$321.56"
+                   },
+                   "order":{
+                      "status":"1",
+                      "currency":"USD",
+                      "quantity":"3",
+                      "shipping_amount":"$0.00",
+                      "total":"$964.68",
+                      "total_charged_in_usd":"964.68",
+                      "card_last4":"4242"
+                   },
+                   "conditional":{
+                      "collect_shipping_address":"1",
+                      "digital_goods":"1",
+                      "shippable":null,
+                      "pay_what_you_want":"0"
+                   },
+                   "created":"1405404739",
+                   "meta":{
+                      "test":"123"
+                   }
+                }
 
 ### Refund an order [POST]
 + Request (application/json)
